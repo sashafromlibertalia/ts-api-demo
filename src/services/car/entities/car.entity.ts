@@ -1,7 +1,8 @@
 import { car } from "../models/car.model"
 import uuidv4 from "uuid";
+import { CarTypes } from "../enums/car.types";
 
-class Car {
+export class Car {
     private readonly MINIMAL_HORSE_POWER: number = 120;
     private readonly MINIMAL_TORQUE: number = 250;
 
@@ -10,6 +11,7 @@ class Car {
     readonly model: string
     readonly horsePower: number
     readonly torque: number
+    readonly type: CarTypes
 
     constructor(carModel: car) {
         if (carModel.horsePower < this.MINIMAL_HORSE_POWER)
@@ -29,5 +31,6 @@ class Car {
         this.horsePower = carModel.horsePower
         this.model = carModel.model
         this.torque = carModel.torque
+        this.type = carModel.type
     }
 }
