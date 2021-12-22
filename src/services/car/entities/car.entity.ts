@@ -1,6 +1,6 @@
 import { car } from "../models/car.model"
 import uuidv4 from "uuid";
-import { CarTypes } from "../enums/car.types";
+import { CarTypes } from "../../../common/enums/car.types";
 
 export class Car {
     private readonly MINIMAL_HORSE_POWER: number = 120;

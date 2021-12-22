@@ -1,5 +1,5 @@
 import uuidv4 from "uuid";
-import { CustomerSex } from "../enums/customer.sex";
+import { CustomerSex } from "../../../common/enums/customer.sex";
 import { customer } from "../models/customer.model";
 
 export class Customer {

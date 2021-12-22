@@ -1,4 +1,4 @@
-import { CustomerSex } from "../enums/customer.sex";
+import { CustomerSex } from "../../../common/enums/customer.sex";
 
 export type customer = {
     name: string

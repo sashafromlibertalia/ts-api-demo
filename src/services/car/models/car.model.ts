@@ -1,4 +1,4 @@
-import { CarTypes } from "../enums/car.types";
+import { CarTypes } from "../../../common/enums/car.types";
 
 export type car = {
     brand: string
