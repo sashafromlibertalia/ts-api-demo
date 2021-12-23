@@ -5,10 +5,10 @@ import { ICarService } from "./interfaces/car.interface.service";
 import { ClientProxy } from '@nestjs/microservices';
 import lowdb from "lowdb";
 import { default as FileSync } from "lowdb/adapters/FileSync";
-import { CarsDatabase } from "./interfaces/cars.db";
+import CarsDatabase from "./interfaces/cars.db";
 
 @Injectable()
-export class CarService implements ICarService {
+class CarService implements ICarService {
     private db: lowdb.LowdbSync<CarsDatabase>;
     constructor(@Inject(MSTypes.CAR) private readonly client: ClientProxy) {
         this.db = lowdb(new FileSync<CarsDatabase>("carsDb.json"))
@@ -28,3 +28,5 @@ export class CarService implements ICarService {
     }
 
 }
+
+export default CarService

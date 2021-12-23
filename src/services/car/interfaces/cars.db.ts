@@ -1,5 +1,7 @@
-import { Car } from "../entities/car.entity";
+import Car from "../entities/car.entity";
 
-export interface CarsDatabase {
+interface CarsDatabase {
     Cars: Array<Car>
 }
+
+export default CarsDatabase
