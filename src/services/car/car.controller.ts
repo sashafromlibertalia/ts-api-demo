@@ -2,7 +2,7 @@ import { Controller, Get, Param, Post } from '@nestjs/common';
 import CarService from './car.service';
 import Car from './entities/car.entity';
 
-@Controller('cars')
+@Controller('api/cars')
 export class CarController {
     constructor(private readonly carService: CarService) { }
 
