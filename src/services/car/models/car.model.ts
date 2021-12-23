@@ -1,9 +1,11 @@
-import { CarTypes } from "../../../common/enums/car.types";
+import CarTypes from "../../../common/enums/car.types";
 
-export type car = {
+type CarModel = {
     brand: string
     model: string
     horsePower: number
     torque: number,
     type: CarTypes
 }
+
+export default CarModel

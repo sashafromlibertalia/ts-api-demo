@@ -1,8 +1,8 @@
-import { car } from "../models/car.model"
-import uuidv4 from "uuid";
-import { CarTypes } from "../../../common/enums/car.types";
+import CarModel from "../models/car.model"
+import { v4 as uuid } from 'uuid';
+import CarTypes from "../../../common/enums/car.types";
 
-export class Car {
+class Car {
     private readonly MINIMAL_HORSE_POWER: number = 120;
     private readonly MINIMAL_TORQUE: number = 250;
 
@@ -13,7 +13,7 @@ export class Car {
     readonly torque: number
     readonly type: CarTypes
 
-    constructor(carModel: car) {
+    constructor(carModel: CarModel) {
         if (carModel.horsePower < this.MINIMAL_HORSE_POWER)
             throw new Error("Engine power can't be that poor.")
 
@@ -26,7 +26,7 @@ export class Car {
         if (!!!carModel.model)
             throw new Error("Car's model can't be empty.")
 
-        this.ID = uuidv4.v4()
+        this.ID = uuid()
         this.brand = carModel.brand
         this.horsePower = carModel.horsePower
         this.model = carModel.model
@@ -34,3 +34,5 @@ export class Car {
         this.type = carModel.type
     }
 }
+
+export default Car

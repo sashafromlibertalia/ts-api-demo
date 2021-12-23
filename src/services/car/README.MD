@@ -7,17 +7,13 @@
   GET /api/cars
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
-
 #### Get item
 
 ```http
-  GET /api/items/${id}
+  GET /api/cars/${id}
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of cars to fetch |
+| `id`      | `string` | **Required**. Id of car to fetch |
 
