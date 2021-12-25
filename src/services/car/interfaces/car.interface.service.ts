@@ -5,4 +5,5 @@ export interface ICarService {
     getAll(): Promise<Car[]>;
     getCarById(id: string): Promise<Car>;
     saveNewCar(carInfo: CarModel): Promise<Car>;
+    deleteCar(id: number): Promise<void>;
 }
