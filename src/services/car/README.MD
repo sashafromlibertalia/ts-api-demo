@@ -42,3 +42,13 @@ Example:
     "type": "COUPE",
 }
 ```
+
+#### Delete car
+
+```http
+  POST /api/cars/delete?${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of car to delete |
