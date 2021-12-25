@@ -1,23 +1,36 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from '@nestjs/common';
 import CarService from './car.service';
 import Car from './entities/car.entity';
+import CarModel from './models/car.model';
 
 @Controller('api/cars')
 export class CarController {
     constructor(private readonly carService: CarService) { }
 
     @Get()
-    getAll(): Array<Car> {
-        return this.carService.getAll()
+    async getAll(): Promise<Car[]> {
+        try {
+            return await this.carService.getAll()   
+        } catch (error) {
+            throw new HttpException('Error occured', error);
+        }
     }
 
     @Get(':id')
-    getCarById(@Param('id') id): Car {
-        return this.carService.getCarById(id)
+    async getCarById(@Param('id') id: string): Promise<Car> {
+        try {
+            return this.carService.getCarById(id)   
+        } catch (error) {
+            throw new HttpException('Not found', HttpStatus.NOT_FOUND);
+        }
     }
 
     @Post()
-    saveNewCar(): Car {
-        return this.carService.saveNewCar()
+    async saveNewCar(@Body() carInfo: CarModel): Promise<Car> {
+        try {
+            return this.carService.saveNewCar(carInfo)
+        } catch (error) {
+            throw new HttpException(`Car wasn't created`, HttpStatus.BAD_REQUEST);
+        }
     }
 }

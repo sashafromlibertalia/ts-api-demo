@@ -1,8 +1,8 @@
-const enum CarTypes {
-    SEDAN = 1,
-    COUPE,
-    SUV,
-    CABRIO,
+enum CarTypes {
+    SEDAN = "SEDAN",
+    COUPE = "COUPE",
+    SUV = "SUV",
+    CABRIO = "CABRIO",
 }
 
 export default CarTypes

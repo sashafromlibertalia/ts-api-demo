@@ -16,7 +16,7 @@ test('Create car entity => entity created', () => {
     }).not.toThrowError()
 });
 
-test('Create car entity => catch error', () => {
+test('Create car entity with poor power => catch error', () => {
     const carData: CarModel = {
         brand: 'BMW',
         model: 'M5',

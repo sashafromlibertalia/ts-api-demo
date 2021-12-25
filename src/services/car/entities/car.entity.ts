@@ -26,6 +26,9 @@ class Car {
         if (!!!carModel.model)
             throw new Error("Car's model can't be empty.")
 
+        if (!Object.values(CarTypes).includes(carModel.type))
+            throw new Error("Invalid car type.")
+
         this.ID = uuid()
         this.brand = carModel.brand
         this.horsePower = carModel.horsePower

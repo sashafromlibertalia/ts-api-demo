@@ -1,30 +1,41 @@
-import { MSTypes } from "src/common/microservices";
+import { MSTypes } from "src/common/microservice.types";
 import Car from "./entities/car.entity";
 import { Inject, Injectable } from '@nestjs/common';
 import { ICarService } from "./interfaces/car.interface.service";
 import { ClientProxy } from '@nestjs/microservices';
-import lowdb from "lowdb";
-import { default as FileSync } from "lowdb/adapters/FileSync";
-import CarsDatabase from "./interfaces/cars.db";
+import DbService from "../../db/db.service";
+import CarModel from "./models/car.model";
 
 @Injectable()
 class CarService implements ICarService {
-    private db: lowdb.LowdbSync<CarsDatabase>;
+    private readonly db: DbService
     constructor(@Inject(MSTypes.CAR) private readonly client: ClientProxy) {
-        this.db = lowdb(new FileSync<CarsDatabase>("carsDb.json"))
+        this.db = new DbService()
     }
 
-    getAll(): Car[] {
-        console.log(this.db)
-        throw new Error("Method not implemented.");
+    async getAll(): Promise<Car[]> {
+        return await this.db.client.car.findMany()
     }
 
-    getCarById(id: string): Car {
-        throw new Error("Method not implemented.");
+    async getCarById(id: string): Promise<Car> {
+        return await this.db.client.car.findUnique({
+            where: {
+                id: parseInt(id, 10)
+            }
+        })
     }
     
-    saveNewCar(): Car {
-        throw new Error("Method not implemented.");
+    async saveNewCar(carInfo: CarModel): Promise<Car> {
+        return await this.db.client.car.create({
+            data: {
+                brand: carInfo.brand,
+                model: carInfo.model,
+                horsePower: carInfo.horsePower,
+                torque: carInfo.torque,
+                type: carInfo.type,
+                createdAt: new Date().toISOString()
+            }
+        })
     }
 
 }

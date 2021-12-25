@@ -1,7 +1,8 @@
 import Car from "../entities/car.entity";
+import CarModel from "../models/car.model";
 
 export interface ICarService {
-    getAll(): Array<Car>;
-    getCarById(id: string): Car;
-    saveNewCar(): Car;
+    getAll(): Promise<Car[]>;
+    getCarById(id: string): Promise<Car>;
+    saveNewCar(carInfo: CarModel): Promise<Car>;
 }
