@@ -38,6 +38,13 @@ class CarService implements ICarService {
         })
     }
 
+    async deleteCar(id: number): Promise<void> {
+        await this.db.client.car.delete({
+            where: {
+                id: id
+            }
+        })
+    }
 }
 
 export default CarService

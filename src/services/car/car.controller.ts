@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, Query } from '@nestjs/common';
 import CarService from './car.service';
 import Car from './entities/car.entity';
 import CarModel from './models/car.model';
@@ -31,6 +31,15 @@ export class CarController {
             return this.carService.saveNewCar(carInfo)
         } catch (error) {
             throw new HttpException(`Car wasn't created`, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @Post("/delete")
+    async deleteCar(@Query('id') id: string): Promise<void> {
+        try {
+            return this.carService.deleteCar(parseInt(id, 10))
+        } catch (error) {
+            throw new HttpException(`Car wasn't removed`, HttpStatus.BAD_REQUEST);
         }
     }
 }
