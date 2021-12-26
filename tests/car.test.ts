@@ -1,8 +1,8 @@
 import CarTypes from "../src/common/enums/car.types";
-import CarModel from "../src/services/car/models/car.model";
+import CarDto from "../src/services/car/dto/car.dto";
 import Car from "../src/services/car/entities/car.entity";
 
-let carData: CarModel = {
+let carData: CarDto = {
     brand: 'BMW',
     model: 'M5',
     horsePower: 650,
@@ -21,6 +21,5 @@ test('Create car entity with poor power => catch error', () => {
     carData.horsePower = 10
     expect(() => {
         new Car(carData);
-        carData.horsePower = 650
     }).toThrowError()
 });

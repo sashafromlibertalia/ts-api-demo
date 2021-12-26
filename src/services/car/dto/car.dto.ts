@@ -1,6 +1,6 @@
 import CarTypes from "../../../common/enums/car.types";
 
-type CarModel = {
+type CarDto = {
     brand: string
     model: string
     horsePower: number
@@ -8,4 +8,4 @@ type CarModel = {
     type: CarTypes
 }
 
-export default CarModel
+export default CarDto

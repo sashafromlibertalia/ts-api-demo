@@ -1,8 +1,8 @@
-import CarModel from "../models/car.model"
 import { v4 as uuid } from 'uuid';
 import CarTypes from "../../../common/enums/car.types";
+import CarDto from "../dto/car.dto";
 
-class Car {
+class CarEntity {
     private readonly MINIMAL_HORSE_POWER: number = 120;
     private readonly MINIMAL_TORQUE: number = 250;
 
@@ -13,7 +13,7 @@ class Car {
     readonly torque: number
     readonly type: CarTypes
 
-    constructor(carModel: CarModel) {
+    constructor(carModel: CarDto) {
         if (carModel.horsePower < this.MINIMAL_HORSE_POWER)
             throw new Error("Engine power can't be that poor.")
 
@@ -38,4 +38,4 @@ class Car {
     }
 }
 
-export default Car
+export default CarEntity

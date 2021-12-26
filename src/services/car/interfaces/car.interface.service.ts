@@ -1,9 +1,9 @@
-import Car from "../entities/car.entity";
-import CarModel from "../models/car.model";
+import CarDto from "../dto/car.dto";
+import { Car as CarModel } from '@prisma/client'
 
 export interface ICarService {
-    getAll(): Promise<Car[]>;
-    getCarById(id: string): Promise<Car>;
-    saveNewCar(carInfo: CarModel): Promise<Car>;
+    getAll(): Promise<CarModel[]>;
+    getCarById(id: string): Promise<CarModel>;
+    saveNewCar(carInfo: CarDto): Promise<CarModel>;
     deleteCar(id: number): Promise<void>;
 }

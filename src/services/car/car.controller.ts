@@ -1,14 +1,14 @@
 import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, Query } from '@nestjs/common';
 import CarService from './car.service';
-import Car from './entities/car.entity';
-import CarModel from './models/car.model';
+import CarDto from './dto/car.dto';
+import { Car as CarModel } from '@prisma/client'
 
 @Controller('api/cars')
 export class CarController {
     constructor(private readonly carService: CarService) { }
 
     @Get()
-    async getAll(): Promise<Car[]> {
+    async getAll(): Promise<CarModel[]> {
         try {
             return await this.carService.getAll()   
         } catch (error) {
@@ -17,7 +17,7 @@ export class CarController {
     }
 
     @Get(':id')
-    async getCarById(@Param('id') id: string): Promise<Car> {
+    async getCarById(@Param('id') id: string): Promise<CarModel> {
         try {
             return this.carService.getCarById(id)   
         } catch (error) {
@@ -26,7 +26,7 @@ export class CarController {
     }
 
     @Post()
-    async saveNewCar(@Body() carInfo: CarModel): Promise<Car> {
+    async saveNewCar(@Body() carInfo: CarDto): Promise<CarModel> {
         try {
             return this.carService.saveNewCar(carInfo)
         } catch (error) {

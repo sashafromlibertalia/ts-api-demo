@@ -4,4 +4,5 @@ export type customer = {
     name: string
     age: number
     sex: CustomerSex
+    money: number
 }
