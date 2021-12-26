@@ -1,7 +1,7 @@
 import { CustomerSex } from "../../../common/enums/customer.sex";
 import CustomerDto from "../dto/customer.dto";
 
-export class Customer {
+class CustomerEntity {
     private readonly MINIMAL_AGE: number = 18;
 
     readonly name: string
@@ -20,3 +20,5 @@ export class Customer {
         this.sex = customerModel.sex
     }
 }
+
+export default CustomerEntity

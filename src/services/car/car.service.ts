@@ -1,7 +1,5 @@
-import { MSTypes } from "src/common/microservice.types";
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ICarService } from "./interfaces/car.interface.service";
-import { ClientProxy } from '@nestjs/microservices';
 import CarEntity from "./entities/car.entity";
 import { Car as CarModel } from '@prisma/client'
 import CarDto from "./dto/car.dto";
@@ -10,14 +8,14 @@ import DbService from "../../../db/db.module";
 @Injectable()
 class CarService implements ICarService {
     private readonly db: DbService
-    constructor(@Inject(MSTypes.CAR) private readonly client: ClientProxy) {
+    constructor() {
         this.db = new DbService()
     }
 
     async getAll(): Promise<CarModel[]> {
         return await this.db.client.car.findMany({
             include: {
-                customer: true,
+                owner: true,
             },
         })
     }
