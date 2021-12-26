@@ -1,5 +1,5 @@
 import { CustomerSex } from "../../../common/enums/customer.sex";
-import { customer } from "../models/customer.model";
+import CustomerDto from "../dto/customer.dto";
 
 export class Customer {
     private readonly MINIMAL_AGE: number = 18;
@@ -8,7 +8,7 @@ export class Customer {
     readonly age: number
     readonly sex: CustomerSex
 
-    constructor(customerModel: customer) {
+    constructor(customerModel: CustomerDto) {
         if (customerModel.age < this.MINIMAL_AGE)
             throw new Error("Customer too young.")
 

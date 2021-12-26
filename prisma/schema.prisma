@@ -14,7 +14,9 @@ model Car {
   horsePower Int
   torque     Int
   type       String
+  ownerId    Int?
   createdAt  DateTime @default(now())
+  owner      Customer? @relation(fields: [ownerId], references: [id])
 }
 
 model Customer {
@@ -23,4 +25,5 @@ model Customer {
   age       Int
   sex       String
   createdAt DateTime @default(now())
+  cars      Car[]
 }

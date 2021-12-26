@@ -15,7 +15,11 @@ class CarService implements ICarService {
     }
 
     async getAll(): Promise<CarModel[]> {
-        return await this.db.client.car.findMany()
+        return await this.db.client.car.findMany({
+            include: {
+                customer: true,
+            },
+        })
     }
 
     async getCarById(id: string): Promise<CarModel> {
@@ -35,7 +39,7 @@ class CarService implements ICarService {
                 horsePower: car.horsePower,
                 torque: car.torque,
                 type: car.type,
-                createdAt: new Date().toISOString()
+                createdAt: new Date().toISOString(),
             }
         })
     }

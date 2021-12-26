@@ -1,8 +1,10 @@
 import { CustomerSex } from "../../../common/enums/customer.sex";
 
-export type customer = {
+type CustomerDto = {
     name: string
     age: number
     sex: CustomerSex
     money: number
 }
+
+export default CustomerDto
