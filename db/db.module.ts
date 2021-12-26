@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 
-class CarDbService {
+class DbService {
     readonly client: any
    
     constructor() { 
@@ -9,4 +9,4 @@ class CarDbService {
 }
 
 
-export default CarDbService
+export default DbService

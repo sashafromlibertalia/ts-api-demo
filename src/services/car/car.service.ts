@@ -5,13 +5,13 @@ import { ClientProxy } from '@nestjs/microservices';
 import CarEntity from "./entities/car.entity";
 import { Car as CarModel } from '@prisma/client'
 import CarDto from "./dto/car.dto";
-import CarDbService from "./db/cars.db.module";
+import DbService from "../../../db/db.module";
 
 @Injectable()
 class CarService implements ICarService {
-    private readonly db: CarDbService
+    private readonly db: DbService
     constructor(@Inject(MSTypes.CAR) private readonly client: ClientProxy) {
-        this.db = new CarDbService()
+        this.db = new DbService()
     }
 
     async getAll(): Promise<CarModel[]> {

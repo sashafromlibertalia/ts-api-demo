@@ -1,4 +1,3 @@
-import { v4 as uuid } from 'uuid';
 import CarTypes from "../../../common/enums/car.types";
 import CarDto from "../dto/car.dto";
 
@@ -6,7 +5,6 @@ class CarEntity {
     private readonly MINIMAL_HORSE_POWER: number = 120;
     private readonly MINIMAL_TORQUE: number = 250;
 
-    readonly ID: string
     readonly brand: string
     readonly model: string
     readonly horsePower: number
@@ -29,7 +27,6 @@ class CarEntity {
         if (!Object.values(CarTypes).includes(carModel.type))
             throw new Error("Invalid car type.")
 
-        this.ID = uuid()
         this.brand = carModel.brand
         this.horsePower = carModel.horsePower
         this.model = carModel.model
