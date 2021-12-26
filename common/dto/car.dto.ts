@@ -1,4 +1,4 @@
-import CarTypes from "../../../../common/enums/car.types";
+import CarTypes from "../enums/car.types";
 
 type CarDto = {
     brand: string

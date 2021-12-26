@@ -1,5 +1,5 @@
 import CarTypes from "../../../../common/enums/car.types";
-import CarDto from "../dto/car.dto";
+import CarDto from "../../../../common/dto/car.dto";
 
 class CarEntity {
     private readonly MINIMAL_HORSE_POWER: number = 120;

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import CarsDbService from '../db/cars.db.module';
 import { ICarService } from './interfaces/car.interface.service';
 import { Car as CarModel } from '@prisma/client'
-import CarDto from './dto/car.dto';
+import CarDto from '../../../common/dto/car.dto';
 import CarEntity from './entities/car.entity';
 
 @Injectable()
@@ -16,10 +16,10 @@ export class AppService implements ICarService {
         return await this.db.client.car.findMany()
     }
 
-    async getCarById(id: string): Promise<CarModel> {
+    async getCarById(id: number): Promise<CarModel> {
         return await this.db.client.car.findUnique({
             where: {
-                id: parseInt(id, 10)
+                id: id
             }
         })
     }
