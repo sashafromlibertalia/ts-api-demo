@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
+  <img src="https://miro.medium.com/max/659/1*IdCngWtpvaolP9WZxMlaEA.png"  alt="Schema" />
 </p>
   <p align="center">Sample project for testing TypeScript and micro-service architecture creation using <a href="https://github.com/nestjs/nest">Nest</a>
   </p>
