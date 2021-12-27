@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Body, Query, NotFoundException, BadGatewayException, BadRequestException } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Query } from '@nestjs/common';
 import CarDto from ".../../../common/dto/car.dto";
 import { AppService } from './app.service';
 import CustomerDto from '../../common/dto/customer.dto';
@@ -9,74 +9,42 @@ export class AppController {
 
     @Get('cars')
     async getAllCars() {
-        try {
-            return this.service.getAllCars()
-        } catch (error) {
-            throw new BadGatewayException('Error occured')
-        }
+        return this.service.getAllCars()
     }
 
     @Get('cars/:id')
     async getCar(@Param('id') id: string) {
-        try {
-            return this.service.getCar(id)
-        } catch (error) {
-            throw new NotFoundException(`Car wasn't found`)
-        }
+        return this.service.getCar(id)
     }
 
     @Post('cars')
     async saveCar(@Body() carData: CarDto) {
-        try {
-            return this.saveCar(carData)
-        } catch (error) {
-            throw new BadRequestException(`Can't create a car`)
-        }
+        return this.service.saveCar(carData)
     }
 
     @Post('cars/delete')
     async deleteCar(@Query('id') id: string) {
-        try {
-            return this.service.deleteCar(id)
-        } catch (error) {
-            throw new BadRequestException(`Can't remove a car`)
-        }
+        return this.service.deleteCar(id)
     }
 
 
     @Get('customers')
     async getAllCustomers() {
-        try {
-            return this.service.getAllCustomers()
-        } catch (error) {
-            throw new BadGatewayException('Error occured')
-        }
+        return this.service.getAllCustomers()
     }
 
     @Get('customers/:id')
     getCustomer(@Param('id') id: string) {
-        try {
-            return this.service.getCustomer(id)
-        } catch (error) {
-            throw new NotFoundException(`Car wasn't found`)
-        }
+        return this.service.getCustomer(id)
     }
 
     @Post('customers')
     saveCustomer(@Body() customerData: CustomerDto) {
-        try {
-            return this.service.saveCustomer(customerData)
-        } catch (error) {
-            throw new BadRequestException(`Can't creat a customer`)
-        }
+        return this.service.saveCustomer(customerData)
     }
 
     @Post('customers/delete')
     deleteCustomer(@Query('id') id: string) {
-        try {
-            return this.service.deleteCustomer(id)
-        } catch (error) {
-            throw new BadRequestException(`Can't remove a customer`)
-        }
+        return this.service.deleteCustomer(id)
     }
 }

@@ -1,5 +1,5 @@
-import { Controller, HttpException, HttpStatus, Logger, NotFoundException } from '@nestjs/common';
-import { MessagePattern, Payload } from '@nestjs/microservices';
+import { Controller, UseFilters } from '@nestjs/common';
+import { MessagePattern, Payload, RpcException } from '@nestjs/microservices';
 import { AppService } from './car.service';
 import { Car as CarModel } from '@prisma/client'
 import CarDto from '../../../common/dto/car.dto';
@@ -15,17 +15,17 @@ export class AppController {
     }
 
     @MessagePattern({ cmd: CarCmd.GetSingleCar })
-    async getCar(@Payload() id: number): Promise<CarModel> {
+    async getCar(@Payload() id: number): Promise<CarModel | RpcException> {
         return await this.carService.getCarById(id)
     }
 
     @MessagePattern({ cmd: CarCmd.CreateCar })
-    async createCar(@Payload() data: CarDto): Promise<CarModel> {
+    async createCar(@Payload() data: CarDto): Promise<CarModel | RpcException> {
         return await this.carService.saveNewCar(data)
     }
 
     @MessagePattern({ cmd: CarCmd.DeleteCar })
-    async deleteCar(@Payload() data: number): Promise<void> {
+    async deleteCar(@Payload() data: number): Promise<void | RpcException> {
         return await this.carService.deleteCar(data)
     }
 }

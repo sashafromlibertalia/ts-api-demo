@@ -1,10 +1,11 @@
 import CustomerDto from "../../../../common/dto/customer.dto";
 import { Customer as CustomerModel } from '@prisma/client'
+import { RpcException } from "@nestjs/microservices";
 
 export interface ICustomerService {
     getAll(): Promise<CustomerModel[]>;
-    getCustomerById(id: number): Promise<CustomerModel>;
-    saveNewCustomer(carInfo: CustomerDto): Promise<CustomerModel>;
-    deleteCustomer(id: number): Promise<void>;
-    buyCar(id: number): Promise<CustomerModel>;
+    getCustomerById(id: number): Promise<CustomerModel | RpcException>;
+    saveNewCustomer(carInfo: CustomerDto): Promise<CustomerModel | RpcException>;
+    deleteCustomer(id: number): Promise<void | RpcException>;
+    buyCar(id: number): Promise<CustomerModel | RpcException>;
 }
