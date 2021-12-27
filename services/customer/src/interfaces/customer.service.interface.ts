@@ -7,5 +7,5 @@ export interface ICustomerService {
     getCustomerById(id: number): Promise<CustomerModel | RpcException>;
     saveNewCustomer(carInfo: CustomerDto): Promise<CustomerModel | RpcException>;
     deleteCustomer(id: number): Promise<void | RpcException>;
-    buyCar(id: number): Promise<CustomerModel | RpcException>;
+    buyCar(payload: any): Promise<CustomerModel | RpcException>;
 }

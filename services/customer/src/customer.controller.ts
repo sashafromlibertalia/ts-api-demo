@@ -1,9 +1,10 @@
 import { AppService } from './customer.service';
 import { Customer as CustomerModel } from "@prisma/client"
-import { BadRequestException, Controller, HttpException, HttpStatus, NotFoundException } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import CustomerDto from '../../../common/dto/customer.dto';
 import { MessagePattern, Payload, RpcException } from '@nestjs/microservices';
 import { CustomerCmd } from '../../../common/services.cmd';
+import PurchaseDto from '../../../common/dto/purchase.dto';
 
 @Controller()
 export class AppController {
@@ -11,7 +12,7 @@ export class AppController {
 
     @MessagePattern({ cmd: CustomerCmd.GetAll })
     async getAll(): Promise<CustomerModel[]> {
-        return await this.customerService.getAll()   
+        return await this.customerService.getAll()
     }
 
     @MessagePattern({ cmd: CustomerCmd.GetSingleCustomer })
@@ -30,7 +31,7 @@ export class AppController {
     }
 
     @MessagePattern({ cmd: CustomerCmd.PurchaseCar })
-    async buyCar(@Payload() id: string): Promise<CustomerModel | RpcException> {
-        return await this.customerService.buyCar(parseInt(id, 10))
+    async buyCar(@Payload() payload: object): Promise<CustomerModel | RpcException> {
+        return await this.customerService.buyCar(payload)
     }
 }

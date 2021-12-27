@@ -1,8 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 import CarDto from '../../common/dto/car.dto';
 import CustomerDto from '../../common/dto/customer.dto';
+import PurchaseDto from '../../common/dto/purchase.dto';
 import ServiceTypes from '../../common/microservice.types';
 import { CarCmd, CustomerCmd } from '../../common/services.cmd';
 import IAppService from './interfaces/app.service.interface';
@@ -10,7 +11,7 @@ import IAppService from './interfaces/app.service.interface';
 @Injectable()
 export class AppService implements IAppService {
     constructor(@Inject(ServiceTypes.CAR) private readonly clientCarService: ClientProxy,
-                @Inject(ServiceTypes.CUSTOMER) private readonly clientCustomerService: ClientProxy) {}
+        @Inject(ServiceTypes.CUSTOMER) private readonly clientCustomerService: ClientProxy) { }
 
     getAllCars(): Observable<object[]> {
         return this.clientCarService.send({ cmd: CarCmd.GetAll }, '');
@@ -42,5 +43,14 @@ export class AppService implements IAppService {
 
     deleteCustomer(id: string): Observable<void> {
         return this.clientCustomerService.send({ cmd: CustomerCmd.GetSingleCustomer }, parseInt(id, 10));
+    }
+
+    async purchaseCar(purchase: PurchaseDto): Promise<Observable<void>> {
+        const car = async () => {
+            const fetched = await lastValueFrom(this.clientCarService.send({ cmd: CarCmd.GetSingleCar }, purchase.car));
+            return fetched;
+        }
+
+        return this.clientCustomerService.send({ cmd: CustomerCmd.PurchaseCar }, { data: purchase, model: await car() });
     }
 }

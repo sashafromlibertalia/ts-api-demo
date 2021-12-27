@@ -1,5 +1,4 @@
 import { Inject, Injectable } from '@nestjs/common';
-import ServiceTypes from '../../../common/microservice.types';
 import { Customer as CustomerModel } from "@prisma/client"
 import CustomersDbService from '../db/customers.db.module';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
@@ -63,7 +62,46 @@ export class AppService implements ICustomerService {
         if (!deletedCustomer.affected)
             return new CustomerBadRequestException()
     }
-    async buyCar(id: number): Promise<CustomerModel | RpcException> {
-        throw new Error("Method not implemented.");
+    async buyCar(payload: any): Promise<CustomerModel | RpcException> {        
+        const customer = await this.db.client.customer.findUnique({
+            where: {
+                id: payload.data.customer
+            },
+            include: {
+                cars: true
+            }
+        })
+
+        if (!customer)
+            return new CustomerNotFoundException(payload.data.customer)
+
+        await this.db.client.customer.update({
+            where: {
+                id: payload.data.customer
+            },
+            data: {
+                cars: {
+                    create: {
+                        id: payload.model.id,
+                        brand: payload.model.brand,
+                        model: payload.model.model,
+                        horsePower: payload.model.horsePower,
+                        torque: payload.model.torque,
+                        type: payload.model.type,
+                        createdAt: payload.model.createdAt,
+                    }
+                }
+            }
+        })
+
+        const updatedCustomer = await this.db.client.customer.findUnique({
+            where: {
+                id: payload.data.customer
+            },
+            include: {
+                cars: true
+            }
+        })
+        return updatedCustomer
     }
 }

@@ -5,7 +5,7 @@ class CarBadRequestException extends RpcException {
     constructor() {
         super({
             status: HttpStatus.BAD_REQUEST,
-            message: `Bad request provided`
+            message: `Bad`
         })
     }
 }
