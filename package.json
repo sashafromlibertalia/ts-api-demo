@@ -1,9 +1,26 @@
 {
     "scripts": {
         "test": "npm run postinstall",
-        "postinstall": "(cd web-gateway && npm test); (cd services/car && npm test);"
+        "postinstall": "(cd web-gateway && npm test); (cd services/car && npm test);",
+        "start": "concurrently \"cd web-gateway && npm run build && npm run start:prod\" \"cd services/car && npm run build && npm run start:prod\""
     },
     "dependencies": {
         "postinstall": "^0.7.4"
-    }
+    },
+    "devDependencies": {
+        "concurrently": "^6.5.1"
+    },
+    "name": "ts-api-demo",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sashafromlibertalia/ts-api-demo.git"
+    },
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sashafromlibertalia/ts-api-demo/issues"
+    },
+    "homepage": "https://github.com/sashafromlibertalia/ts-api-demo#readme"
 }
