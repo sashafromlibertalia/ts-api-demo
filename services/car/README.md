@@ -26,11 +26,11 @@
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `brand`      | `string` | **Required**. Brand of car |
-| `model`      | `string` | **Required**. Model of car |
-| `horsePower`      | `string` | **Required**. Horse power of car |
-| `torque`      | `string` | **Required**. Torque of car |
-| `type`      | `string` | **Required**. Type of car |
+| `brand`      | `string` | **Required**. Car brand |
+| `model`      | `string` | **Required**. Car model |
+| `horsePower`      | `string` | **Required**. Car's horse power |
+| `torque`      | `string` | **Required**. Car's torque |
+| `type`      | `string` | **Required**. Car's type [`SEDAN`, `COUPE`, `SUV`] |
 
 Example: 
 ```json
