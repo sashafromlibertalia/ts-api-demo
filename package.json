@@ -1,8 +1,8 @@
 {
     "scripts": {
         "test": "npm run postinstall",
-        "postinstall": "concurrently \"cd web-gateway && npm test\" \"cd services/car && npm test\"",
-        "start": "concurrently \"cd web-gateway && npm run build && npm run start:prod\" \"cd services/car && npm run build && npm run start:prod\""
+        "postinstall": "concurrently \"cd web-gateway && npm test\" \"cd services/car && npm test\"  \"cd services/customer && npm test\"",
+        "start": "concurrently \"cd web-gateway && npm run build && npm run start:prod\" \"cd services/car && npm run build && npm run start:prod\" \"cd services/customer && npm run build && npm run start:prod\""
     },
     "dependencies": {
         "postinstall": "^0.7.4"
