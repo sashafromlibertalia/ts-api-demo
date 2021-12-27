@@ -1,6 +1,6 @@
-const enum MSTypes {
+const enum ServiceTypes {
     CAR = "CAR_MICROSERVICE",
     CUSTOMER = "CUSTOMER_MICROSERVICE",
 }
 
-export default MSTypes
+export default ServiceTypes
