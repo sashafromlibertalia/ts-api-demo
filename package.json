@@ -1,7 +1,7 @@
 {
     "scripts": {
         "test": "npm run postinstall",
-        "postinstall": "(cd web-gateway && npm test); (cd services/car && npm test);",
+        "postinstall": "concurrently \"cd web-gateway && npm test\" \"cd services/car && npm test\"",
         "start": "concurrently \"cd web-gateway && npm run build && npm run start:prod\" \"cd services/car && npm run build && npm run start:prod\""
     },
     "dependencies": {
