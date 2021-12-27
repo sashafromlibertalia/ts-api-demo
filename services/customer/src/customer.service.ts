@@ -23,7 +23,7 @@ export class AppService implements ICustomerService {
     }
 
     async getCustomerById(id: number): Promise<CustomerModel> {
-        return await this.db.client.customer.findUnique({
+        const customer = await this.db.client.customer.findUnique({
             where: {
                 id: id
             },
@@ -31,6 +31,11 @@ export class AppService implements ICustomerService {
                 cars: true
             }
         })
+
+        if (customer === null)
+            throw new Error('Customer is null')
+        
+        return customer
     }
     async saveNewCustomer(customerInfo: CustomerDto): Promise<CustomerModel> {
         const customer = new CustomerEntity(customerInfo)
