@@ -7,11 +7,23 @@ datasource carsDb {
   url      = "file:./customers.db"
 }
 
+model OwningCar {
+  id         Int       @unique
+  brand      String
+  model      String
+  horsePower Int
+  torque     Int
+  type       String
+  createdAt  DateTime  @default(now())
+  Customer   Customer? @relation(fields: [customerId], references: [id])
+  customerId Int?
+}
+
 model Customer {
-  id        Int      @id @default(autoincrement())
+  id        Int         @id @default(autoincrement())
   name      String
   age       Int
   sex       String
-  createdAt DateTime @default(now())
-  cars      Int?
+  createdAt DateTime    @default(now())
+  cars      OwningCar[]
 }

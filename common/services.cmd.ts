@@ -9,7 +9,8 @@ const enum CustomerCmd {
     GetAll = 'get-all-customers',
     GetSingleCustomer = 'get-single-customer',
     CreateCustomer = 'create-customer',
-    Delete = 'delete-customer'
+    Delete = 'delete-customer',
+    PurchaseCar = 'purchase-car'
 }
 
 export { CarCmd, CustomerCmd }

@@ -10,6 +10,7 @@
         "build": "nest build",
         "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
         "start": "nest start",
+        "prod": "npm run build && npm run start:prod",
         "start:dev": "node dist/services/car/src/main && nest start --watch",
         "start:debug": "nest start --debug --watch",
         "start:prod": "node dist/services/car/src/main",

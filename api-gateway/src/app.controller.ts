@@ -1,6 +1,7 @@
-import { Controller, Get, Inject, OnApplicationBootstrap, Logger, Param, Post, Body, Query } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Query } from '@nestjs/common';
 import CarDto from ".../../../common/dto/car.dto";
 import { AppService } from './app.service';
+import CustomerDto from '../../common/dto/customer.dto';
 
 @Controller('/api/')
 export class AppController {
@@ -24,5 +25,26 @@ export class AppController {
     @Post('cars/delete')
     deleteCar(@Query('id') id: string) {
         return this.service.deleteCar(id)
+    }
+
+    
+    @Get('customers')
+    getAllCustomers() {
+        return this.service.getAllCustomers()
+    }
+
+    @Get('customers/:id')
+    getCustomer(@Param('id') id: string) {
+        return this.service.getCustomer(id)
+    }
+
+    @Post('customers')
+    saveCustomer(@Body() customerData: CustomerDto) {
+        return this.service.saveCustomer(customerData)
+    }
+
+    @Post('customers/delete')
+    deleteCustomer(@Query('id') id: string) {
+        return this.service.deleteCustomer(id)
     }
 }

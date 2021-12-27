@@ -5,19 +5,20 @@ import CustomersDbService from '../db/customers.db.module';
 import { ClientProxy } from '@nestjs/microservices';
 import CustomerDto from '../../../common/dto/customer.dto';
 import CustomerEntity from './entities/customer.entity';
+import { ICustomerService } from './interfaces/customer.service.interface';
 
 @Injectable()
-export class AppService {
+export class AppService implements ICustomerService {
     private readonly db: CustomersDbService
-    constructor(@Inject(ServiceTypes.CUSTOMER) private readonly client: ClientProxy) {
+    constructor() {
         this.db = new CustomersDbService()
     }
 
     async getAll(): Promise<CustomerModel[]> {
         return await this.db.client.customer.findMany({
             include: {
-                cars: true,
-            },
+                cars: true
+            }
         })
     }
 

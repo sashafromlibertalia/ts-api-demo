@@ -14,7 +14,5 @@ model Car {
   horsePower Int
   torque     Int
   type       String
-//   ownerId    Int?
   createdAt  DateTime @default(now())
-//   owner      Customer? @relation(fields: [ownerId], references: [id])
 }
