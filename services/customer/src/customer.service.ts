@@ -1,7 +1,7 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Customer as CustomerModel } from "@prisma/client"
 import CustomersDbService from '../db/customers.db.module';
-import { ClientProxy, RpcException } from '@nestjs/microservices';
+import { RpcException } from '@nestjs/microservices';
 import CustomerDto from '../../../common/dto/customer.dto';
 import CustomerEntity from './entities/customer.entity';
 import { ICustomerService } from './interfaces/customer.service.interface';

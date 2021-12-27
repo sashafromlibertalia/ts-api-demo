@@ -4,7 +4,6 @@ import { Controller } from '@nestjs/common';
 import CustomerDto from '../../../common/dto/customer.dto';
 import { MessagePattern, Payload, RpcException } from '@nestjs/microservices';
 import { CustomerCmd } from '../../../common/services.cmd';
-import PurchaseDto from '../../../common/dto/purchase.dto';
 
 @Controller()
 export class AppController {
