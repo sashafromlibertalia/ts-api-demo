@@ -1,54 +1,71 @@
 
 ## API Reference
 
-#### Get all cars
+#### Get all customers
 
 ```http
-  GET /api/cars
+  GET /api/customers
 ```
 
-#### Get car
+#### Get customer
 
 ```http
-  GET /api/cars/${id}
+  GET /api/customers/${id}
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of car to fetch |
+| `id`      | `string` | **Required**. Id of customer to fetch |
 
-#### Save new car
+#### Save new customer
 
 ```http
-  POST /api/cars
+  POST /api/customers
 ```
 > Body
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `brand`      | `string` | **Required**. Brand of car |
-| `model`      | `string` | **Required**. Model of car |
-| `horsePower`      | `string` | **Required**. Horse power of car |
-| `torque`      | `string` | **Required**. Torque of car |
-| `type`      | `string` | **Required**. Type of car |
+| `name`      | `string` | **Required**. Customer's name |
+| `age`      | `int` | **Required**. Customer's age |
+| `sex`      | `string` | **Required**. Customer's sex |
 
 Example: 
 ```json
 {
-    "brand": "BMW",
-    "model": "M4",
-    "horsePower": 500,
-    "torque": 700,
-    "type": "COUPE",
+    "name": "Александр Мирошниченко",
+    "age": 19,
+    "sex": "MALE"
 }
 ```
 
-#### Delete car
+#### Delete customer
 
 ```http
-  POST /api/cars/delete?${id}
+  POST /api/customer/delete?${id}
 ```
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of car to delete |
+| `id`      | `string` | **Required**. Id of customer to delete |
+
+#### Purchase car
+
+```http
+  POST /api/customer/purchase
+```
+
+> Body
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `car`      | `int` | **Required**. Id of car to purchase |
+| `customer`      | `int` | **Required**. Customer's id |
+
+Example: 
+```json
+{
+    "car": 6,
+    "customer": 3
+}
+```
