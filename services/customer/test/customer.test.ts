@@ -21,3 +21,10 @@ test('Create car entity with poor power => catch error', () => {
         new CustomerEntity(customerData);
     }).toThrowError()
 });
+
+test('Create car entity with no name => catch error', () => {
+    customerData.name = ""
+    expect(() => {
+        new CustomerEntity(customerData);
+    }).toThrowError()
+});
