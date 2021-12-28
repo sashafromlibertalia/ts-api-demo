@@ -10,9 +10,9 @@ class CustomerEntity {
 
     constructor(customerModel: CustomerDto) {
         if (customerModel.age < this.MINIMAL_AGE)
-            throw new Error("Customer too young.")
+            throw new Error("Customer too young.")            
 
-        if (!!!customerModel.name)
+        if (customerModel.name === "" && !customerModel.name)
             throw new Error("Customer's name not found.")
 
         this.name = customerModel.name

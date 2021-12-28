@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 
 class CustomersDbService {
-    readonly client: any
+    readonly client: PrismaClient<any>
    
     constructor() { 
         this.client = new PrismaClient()

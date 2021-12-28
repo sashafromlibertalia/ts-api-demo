@@ -13,6 +13,7 @@ export class AppService implements ICustomerService {
     private readonly db: CustomersDbService
     constructor() {
         this.db = new CustomersDbService()
+        this.db.client.$connect()
     }
 
     async getAll(): Promise<CustomerModel[]> {
@@ -53,14 +54,13 @@ export class AppService implements ICustomerService {
         }
     }
     async deleteCustomer(id: number): Promise<void | RpcException> {
-        const deletedCustomer = await this.db.client.customer.delete({
+        await this.db.client.customer.delete({
             where: {
                 id: id
             }
-        })
-
-        if (!deletedCustomer.affected)
+        }).catch(() => {
             return new CustomerBadRequestException()
+        })
     }
     async buyCar(payload: any): Promise<CustomerModel | RpcException> {        
         const customer = await this.db.client.customer.findUnique({
