@@ -16,7 +16,7 @@ export class AppService implements ICustomerService {
         this.db.client.$connect()
     }
 
-    async getAll(): Promise<CustomerModel[]> {
+    async getAllCustomers(): Promise<CustomerModel[]> {
         return await this.db.client.customer.findMany({
             include: {
                 cars: true

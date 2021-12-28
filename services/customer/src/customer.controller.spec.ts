@@ -1,11 +1,11 @@
 import { Customer } from '@prisma/client';
-import CustomerDto from '../../../common/dto/customer.dto';
 import { CustomerSex } from '../../../common/enums/customer.sex';
-import prisma from '../client';
+import { CreateCustomer, DeleteCustomer } from '../test/functions';
+import { prismaMock } from '../singleton';
 import { AppController } from './customer.controller';
 import { AppService } from './customer.service';
 
-describe('AppController', () => {
+describe('CustomerController', () => {
     let customerController: AppController;
     let customerService: AppService;
 
@@ -17,7 +17,7 @@ describe('AppController', () => {
     describe('getAll', () => {
         it('should return an empty array of customers', async () => {
             const result: Customer[] = [];
-            jest.spyOn(customerService, 'getAll').mockImplementation(async () => result);
+            jest.spyOn(customerService, 'getAllCustomers').mockImplementation(async () => result);
 
             customerController.getAll().then((data) => {
                 expect(data).toBe(result);
@@ -27,49 +27,33 @@ describe('AppController', () => {
 
     describe('saveNewCustomer', () => {
         it('should create a new customer', async () => {
-            const customer: CustomerDto = {
+            const customer = {
+                id: 1,
                 name: "Alexander Miroshnichenko",
                 age: 19,
-                sex: CustomerSex.MALE
+                sex: CustomerSex.MALE,
+                createdAt: new Date()
             };
-            const result: Customer = await prisma.customer.create({
-                data: {
-                    name: customer.name,
-                    age: customer.age,
-                    sex: customer.sex,
-                },
-            })
-            jest.spyOn(customerService, 'saveNewCustomer').mockImplementation(async () => result);
 
-            customerController.saveNewCustomer(customer).then((data) => {
-                expect(data).toBe(result)  
-            })
+            //@ts-ignore 
+            prismaMock.customer.create.mockResolvedValue(customer)
+            await expect(CreateCustomer(customer)).resolves.toEqual(customer)
         })
     })
 
     describe('deleteCustomer', () => {
         it('should delete added customer', async () => {
-            const customerDto: CustomerDto = {
+            const customer = {
+                id: 1,
                 name: "Alexander Miroshnichenko",
                 age: 19,
-                sex: CustomerSex.MALE
+                sex: CustomerSex.MALE,
+                createdAt: new Date()
             };
-            const customer: Customer = await prisma.customer.create({
-                data: {
-                    name: customerDto.name,
-                    age: customerDto.age,
-                    sex: customerDto.sex,
-                },
-            })
 
-            const result: Customer[] = []
-            await customerController.saveNewCustomer(customerDto)            
-            await customerController.deleteCustomer(`${customer.id}`)
-
-            jest.spyOn(customerService, 'getAll').mockImplementation(async () => result);
-            customerController.getAll().then((data) => {
-                expect(data).toBe(result);
-            })
+            prismaMock.customer.create.mockResolvedValue(customer)
+            prismaMock.customer.delete.mockResolvedValue(customer)
+            await expect(DeleteCustomer(customer)).resolves.toEqual(customer)
         })
     })
 });

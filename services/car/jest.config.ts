@@ -1,5 +1,6 @@
 module.exports = {
-    roots: ["test"],
+    roots: ["test", "src"],
+    clearMocks: true,
     testMatch: [
         "**/tests/**/*.+(ts|tsx|js)",
         "**/?(*.)+(spec|test).+(ts|tsx|js)"
@@ -8,5 +9,6 @@ module.exports = {
         "^.+\\.(ts|tsx)$": "ts-jest"
     },
     collectCoverage: true,
-    verbose: true
+    verbose: true,
+    setupFilesAfterEnv: ['<rootDir>/singleton.ts']
 }

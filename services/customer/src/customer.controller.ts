@@ -11,7 +11,7 @@ export class AppController {
 
     @MessagePattern({ cmd: CustomerCmd.GetAll })
     async getAll(): Promise<CustomerModel[]> {
-        return await this.customerService.getAll()
+        return await this.customerService.getAllCustomers()
     }
 
     @MessagePattern({ cmd: CustomerCmd.GetSingleCustomer })

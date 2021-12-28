@@ -51,13 +51,12 @@ export class AppService implements ICarService {
     }
 
     async deleteCar(id: number): Promise<void | RpcException> {
-        const deletedCar = await this.db.client.car.delete({
+        await this.db.client.car.delete({
             where: {
                 id: id
             }
-        })
-
-        if (!deletedCar.affected)
+        }).catch(() => {
             return new CarBadRequestException()
+        })
     }
 }
