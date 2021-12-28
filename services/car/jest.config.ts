@@ -1,6 +1,5 @@
 module.exports = {
     roots: ["test"],
-    rootDir: "../",
     testMatch: [
         "**/tests/**/*.+(ts|tsx|js)",
         "**/?(*.)+(spec|test).+(ts|tsx|js)"

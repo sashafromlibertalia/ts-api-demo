@@ -25,5 +25,8 @@
     "bugs": {
         "url": "https://github.com/sashafromlibertalia/ts-api-demo/issues"
     },
-    "homepage": "https://github.com/sashafromlibertalia/ts-api-demo#readme"
+    "homepage": "https://github.com/sashafromlibertalia/ts-api-demo#readme",
+    "jest": {
+        "rootDir": "../"
+    }
 }
