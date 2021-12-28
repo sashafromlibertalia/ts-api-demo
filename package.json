@@ -5,6 +5,7 @@
         "start": "concurrently \"cd api-gateway && npm run prod\" \"cd services/car && npm run prod\" \"cd services/customer && npm run prod\""
     },
     "dependencies": {
+        "jest": "^27.4.5",
         "postinstall": "^0.7.4"
     },
     "devDependencies": {
