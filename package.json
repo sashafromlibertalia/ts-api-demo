@@ -1,8 +1,8 @@
 {
     "scripts": {
         "test": "npm run postinstall",
-        "postinstall": "concurrently \"npm --prefix ./services/car run test\"  \"npm --prefix ./services/customer run test\"",
-        "start": "concurrently \"cd api-gateway && npm run prod\" \"cd services/car && npm run prod\" \"cd services/customer && npm run prod\""
+        "postinstall": "concurrently \"npm --prefix services/car run test\"  \"npm --prefix services/customer run test\"",
+        "start": "concurrently \"npm --prefix api-gateway run prod\" \"npm --prefix services/car run prod\" \"npm --prefix services/customer run prod\""
     },
     "dependencies": {
         "jest": "^27.4.5",
@@ -25,8 +25,5 @@
     "bugs": {
         "url": "https://github.com/sashafromlibertalia/ts-api-demo/issues"
     },
-    "homepage": "https://github.com/sashafromlibertalia/ts-api-demo#readme",
-    "jest": {
-        "rootDir": "../"
-    }
+    "homepage": "https://github.com/sashafromlibertalia/ts-api-demo#readme"
 }
