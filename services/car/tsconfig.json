@@ -19,5 +19,4 @@
         "forceConsistentCasingInFileNames": false,
         "noFallthroughCasesInSwitch": false
     },
-    "include": ["node_modules"]
 }
