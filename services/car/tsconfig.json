@@ -21,6 +21,9 @@
         "forceConsistentCasingInFileNames": false,
         "noFallthroughCasesInSwitch": false
     },
+    "ignoreRules": {
+        "TS2307": true
+    },
     "include": [
         "src/**/*.ts",
         "test/**/*.ts"
