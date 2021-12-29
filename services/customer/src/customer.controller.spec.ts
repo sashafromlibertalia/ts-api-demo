@@ -1,6 +1,5 @@
-import { Customer } from '@prisma/client';
 import { CustomerSex } from '../../../common/enums/customer.sex';
-import { CreateCustomer, DeleteCustomer } from '../test/functions';
+import { CreateCustomer, DeleteCustomer, getAllCustomers } from '../test/functions';
 import { prismaMock } from '../singleton';
 import { AppController } from './customer.controller';
 import { AppService } from './customer.service';
@@ -16,12 +15,9 @@ describe('CustomerController', () => {
 
     describe('getAll', () => {
         it('should return an empty array of customers', async () => {
-            const result: Customer[] = [];
-            jest.spyOn(customerService, 'getAllCustomers').mockImplementation(async () => result);
-
-            customerController.getAll().then((data) => {
-                expect(data).toBe(result);
-            })
+            //@ts-ignore 
+            prismaMock.customer.findMany.mockResolvedValue([])
+            await expect(getAllCustomers()).resolves.toEqual([])
         });
     });
 
@@ -35,7 +31,6 @@ describe('CustomerController', () => {
                 createdAt: new Date()
             };
 
-            //@ts-ignore 
             prismaMock.customer.create.mockResolvedValue(customer)
             await expect(CreateCustomer(customer)).resolves.toEqual(customer)
         })
@@ -51,7 +46,6 @@ describe('CustomerController', () => {
                 createdAt: new Date()
             };
 
-            prismaMock.customer.create.mockResolvedValue(customer)
             prismaMock.customer.delete.mockResolvedValue(customer)
             await expect(DeleteCustomer(customer)).resolves.toEqual(customer)
         })
