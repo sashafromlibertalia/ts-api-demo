@@ -19,17 +19,7 @@
         "noImplicitAny": false,
         "strictBindCallApply": false,
         "forceConsistentCasingInFileNames": false,
-        "noFallthroughCasesInSwitch": false,
-        "errorReporting": {
-            "excludeCodes": [
-                2307
-            ]
-        },
-    },
-    "errorReporting": {
-        "excludeCodes": [
-            2307
-        ]
+        "noFallthroughCasesInSwitch": false
     },
     "include": [
         "src/**/*.ts",
