@@ -11,14 +11,18 @@
         "sourceMap": true,
         "outDir": "./dist",
         "baseUrl": "./",
-        "types": ["node"],
         "moduleResolution": "node",
         "paths": {
             "@/*": [
                 "node_modules/*"
             ],
         },
-        "noResolve": true,
+        "types": [
+            "node"
+        ],
+        "typeRoots": [
+            "../node_modules/@types"
+        ],
         "incremental": true,
         "skipLibCheck": true,
         "strictNullChecks": false,

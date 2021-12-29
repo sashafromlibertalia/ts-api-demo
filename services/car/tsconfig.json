@@ -19,7 +19,9 @@
         "types": [
             "node"
         ],
-        "noResolve": true,
+        "typeRoots": [
+            "../node_modules/@types"
+        ],
         "incremental": true,
         "moduleResolution": "node",
         "skipLibCheck": true,
