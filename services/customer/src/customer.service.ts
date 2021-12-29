@@ -5,8 +5,8 @@ import { RpcException } from '@nestjs/microservices';
 import CustomerDto from '../../../common/dto/customer.dto';
 import CustomerEntity from './entities/customer.entity';
 import { ICustomerService } from './interfaces/customer.service.interface';
-import CustomerNotFoundException from '../exceptions/customer.notFound.exception';
-import CustomerBadRequestException from '../exceptions/customer.badRequest.exception';
+import CustomerNotFoundException from '../exceptions/customer.not.found.exception';
+import CustomerBadRequestException from '../exceptions/customer.bad.request.exception';
 
 @Injectable()
 export class AppService implements ICustomerService {
