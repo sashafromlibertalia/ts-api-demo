@@ -7,6 +7,7 @@
     "license": "UNLICENSED",
     "scripts": {
         "prebuild": "rimraf dist",
+        "prestart": "prisma generate",
         "build": "nest build",
         "prod": "npm run build && npm run start:prod",
         "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
