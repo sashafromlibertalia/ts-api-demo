@@ -10,16 +10,13 @@
         "target": "es2017",
         "sourceMap": true,
         "outDir": "./dist",
+        "types": ["jest", "node"],
         "baseUrl": "./",
         "paths": {
             "@/*": [
                 "node_modules/*"
             ],
         },
-        "types": [
-            "node"
-        ],
-        "noResolve": true,
         "incremental": true,
         "moduleResolution": "node",
         "skipLibCheck": true,

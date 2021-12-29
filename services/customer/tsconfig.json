@@ -11,14 +11,13 @@
         "sourceMap": true,
         "outDir": "./dist",
         "baseUrl": "./",
-        "types": ["node"],
+        "types": ["jest", "node"],
         "moduleResolution": "node",
         "paths": {
             "@/*": [
                 "node_modules/*"
             ],
         },
-        "noResolve": true,
         "incremental": true,
         "skipLibCheck": true,
         "strictNullChecks": false,
