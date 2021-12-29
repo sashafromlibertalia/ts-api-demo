@@ -13,6 +13,11 @@
         "baseUrl": "./",
         "types": ["node"],
         "moduleResolution": "node",
+        "paths": {
+            "@/*": [
+                "node_modules/*"
+            ],
+        },
         "incremental": true,
         "skipLibCheck": true,
         "strictNullChecks": false,
