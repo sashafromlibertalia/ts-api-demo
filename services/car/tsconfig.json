@@ -11,16 +11,18 @@
         "sourceMap": true,
         "outDir": "./dist",
         "baseUrl": "./",
+        "paths": {
+            "@/*": [
+                "node_modules/*"
+            ],
+        },
         "types": [
             "node"
         ],
-        "typeRoots": [
-            "../node_modules/@types"
-        ],
+        "noResolve": true,
         "incremental": true,
         "moduleResolution": "node",
         "skipLibCheck": true,
-        "esModuleInterop": true,
         "strictNullChecks": false,
         "noImplicitAny": false,
         "strictBindCallApply": false,
