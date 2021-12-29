@@ -1,39 +1,57 @@
-import { Car } from "@prisma/client";
 import { AppController } from "./car.controller";
 import { AppService } from "./car.service";
-import CarDbService from '../db/cars.db.module';
+import { CreateCar, DeleteCar, GetAllCars } from "../test/functions";
+import CarTypes from "../../../common/enums/car.types";
+import { prismaMock } from '../singleton';
 
 describe('CarController', () => {
     let carController: AppController;
     let carService: AppService;
-    let db: CarDbService;
 
     beforeEach(() => {
         carService = new AppService();
         carController = new AppController(carService);
-        db = new CarDbService()
-        db.client.$connect()
     });
 
     describe('getAllCars', () => {
         it('should return an empty array of cars', async () => {
-            const result: Car[] = [];
-            jest.spyOn(carController, 'getAllCars').mockImplementation(async () => result);
-
-            carController.getAllCars().then((data) => {
-                expect(data).toBe(result);
-            })
+            //@ts-ignore 
+            prismaMock.car.findMany.mockResolvedValue([])
+            await expect(GetAllCars()).resolves.toEqual([])
         });
-    });
+    })
 
     describe('getCar', () => {
         it('should return a single car', async () => {
-            const result: Car[] = [];
-            jest.spyOn(carController, 'getAllCars').mockImplementation(async () => result);
+            const car = {
+                id: 1,
+                brand: "BMW",
+                model: "M4",
+                horsePower: 560,
+                torque: 400,
+                type: CarTypes.SEDAN,
+                createdAt: new Date(),
+            };
 
-            carController.getAllCars().then((data) => {
-                expect(data).toBe(result);
-            })
+            prismaMock.car.create.mockResolvedValue(car)
+            await expect(CreateCar(car)).resolves.toEqual(car)
+        });
+    });
+
+    describe('deleteCar', () => {
+        it('should delete a single car', async () => {
+            const car = {
+                id: 1,
+                brand: "BMW",
+                model: "M4",
+                horsePower: 560,
+                torque: 400,
+                type: CarTypes.SEDAN,
+                createdAt: new Date(),
+            };
+
+            prismaMock.car.delete.mockResolvedValue(car)
+            await expect(DeleteCar(car)).resolves.toEqual(car)
         });
     });
 })

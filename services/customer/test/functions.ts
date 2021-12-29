@@ -9,6 +9,11 @@ interface CreateCustomer {
     createdAt: Date,
 }
 
+
+export async function getAllCustomers() {
+    return await prisma.customer.findMany()
+}
+
 export async function CreateCustomer(customer: CreateCustomer) {
     return await prisma.customer.create({
         data: customer,
