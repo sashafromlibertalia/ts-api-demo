@@ -18,6 +18,7 @@
                 "node_modules/*"
             ],
         },
+        "noResolve": true,
         "incremental": true,
         "skipLibCheck": true,
         "strictNullChecks": false,
