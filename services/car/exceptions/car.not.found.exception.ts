@@ -1,4 +1,4 @@
-import { HttpStatus, NotFoundException } from '@nestjs/common';
+import { HttpStatus } from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
 
 class CarNotFoundException extends RpcException {

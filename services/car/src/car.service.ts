@@ -4,9 +4,9 @@ import { ICarService } from './interfaces/car.service.interface';
 import { Car as CarModel } from '@prisma/client'
 import CarDto from '../../../common/dto/car.dto';
 import CarEntity from './entities/car.entity';
-import CarNotFoundException from '../exceptions/car.notFound.exception';
+import CarNotFoundException from '../exceptions/car.not.found.exception';
 import { RpcException } from '@nestjs/microservices';
-import CarBadRequestException from '../exceptions/car.badrequest.exception';
+import CarBadRequestException from '../exceptions/car.bad.request.exception';
 
 @Injectable()
 export class AppService implements ICarService {
