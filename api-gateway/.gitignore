@@ -13,8 +13,6 @@ migrations
 *.db
 *.toml
 *.db-journal
-coverage
-.idea
 
 # Icon must end with two \r
 Icon
