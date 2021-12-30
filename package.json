@@ -15,10 +15,7 @@
     },
     "devDependencies": {
         "@types/jest": "^27.0.3",
-<<<<<<< HEAD
-=======
         "@types/node": "^12.20.39",
->>>>>>> ffe74460a8f4671c0e411d7e4b5b9b29783c5faa
         "concurrently": "^6.5.1"
     },
     "name": "ts-api-demo",
