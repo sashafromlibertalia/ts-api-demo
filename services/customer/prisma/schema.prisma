@@ -16,8 +16,8 @@ model OwningCar {
   torque      Int
   type        String
   createdAt   DateTime  @default(now())
-  Customer    Customer? @relation(fields: [customerId], references: [id])
   customerId  Int?
+  Customer    Customer? @relation(fields: [customerId], references: [id])
 }
 
 model Customer {

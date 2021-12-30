@@ -25,5 +25,9 @@
         "strictBindCallApply": false,
         "forceConsistentCasingInFileNames": false,
         "noFallthroughCasesInSwitch": false
-    }
+    },
+    "include": [
+        "src/**/*.ts",
+        "test/**/*.ts"
+    ],
 }
