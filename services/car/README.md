@@ -30,7 +30,7 @@
 | `model`      | `string` | **Required**. Car model |
 | `horsePower`      | `string` | **Required**. Car's horse power |
 | `torque`      | `string` | **Required**. Car's torque |
-| `type`      | `string` | **Required**. Car's type [`SEDAN`, `COUPE`, `SUV`] |
+| `type`      | `string` | **Required**. Car's type [`SEDAN`, `COUPE`, `SUV`, `CABRIO`] |
 
 Example: 
 ```json
